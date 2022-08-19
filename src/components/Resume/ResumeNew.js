@@ -9,7 +9,7 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const resumeLink =
-"Z:\\Interview Coding\\ReactJS\\Portfolio-master\\Portfolio-master\\src\\Assets\\Projects\\Vishal_Agarwal_2022_Updated.pdf";
+"https://raw.githubusercontent.com/Vishal778a/Portfolio-master/blob/master/src/Assets/Projects/Vishal_Agarwal_2022_Updated.pdf";
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);

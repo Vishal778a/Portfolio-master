@@ -9,11 +9,11 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const resumeLink =
-"https://raw.githubusercontent.com/Vishal778a/Portfolio-master/blob/master/src/Assets/Projects/Vishal_Agarwal_2022_Updated.pdf";
+"https://raw.githubusercontent.com/Vishal778a/Portfolio-master/master/src/Assets/Projects/Vishal_Agarwal_2022_Updated.pdf";
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
-
+  const [numPages, setNumPages] = useState(null)
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
@@ -34,10 +34,22 @@ function ResumeNew() {
           </Button>
         </Row>
 
-        <Row className="resume">
+        {/* <Row className="resume">
           <Document file={resumeLink} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+            <Page pageNumber={3} scale={width > 786 ? 1.7 : 0.6} />
           </Document>
+        </Row> */}
+
+        <Row className="resume" >
+        <Document
+    file={resumeLink}
+    onLoadSuccess={({ numPages })=>setNumPages(numPages)}
+    className="justify-content-center"
+    >
+    {Array.apply(null, Array(numPages))
+    .map((x, i)=>i+1)
+    .map(page => <Page pageNumber={page} scale={width > 786 ? 1.7 : 0.6}  className="d-flex flex-column"/>)}
+</Document>
         </Row>
 
         <Row style={{ justifyContent: "center", position: "relative" }}>
